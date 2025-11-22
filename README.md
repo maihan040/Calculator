@@ -31,10 +31,11 @@ AC to clear all input
 = for results
 
 Project Structure
-text
+```
 /
 ├── index.html     # Main HTML structure
 ├── style.css      # iPhone-inspired calculator styles
 └── (optional) script.js  # JavaScript logic (currrently work in progress)
 All components are modular and can be customized easily.
+```
 
