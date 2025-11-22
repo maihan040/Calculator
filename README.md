@@ -35,7 +35,6 @@ Project Structure
 /
 ├── index.html     # Main HTML structure
 ├── style.css      # iPhone-inspired calculator styles
-└── (optional) script.js  # JavaScript logic (currrently work in progress)
-All components are modular and can be customized easily.
+└── script.js  # JavaScript logic (currrently work in progress)
 ```
 
