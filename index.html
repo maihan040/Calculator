@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basic Calculator</title>
+    <link rel="stylesheet" href="style.css"></link>
+  </head>
+  <body>
+    <div id="container">
+      <!-- div to display result to user  -->
+      <div name="calcOP" id="calcOP">0</div>
+
+      <div class="buttons">
+
+        <div id="specialAndInputBtns">
+            <!-- div to include special operator buttons -->
+            <div class="specialBtns">
+                <button class="extraOperators" id="AC">AC</button>
+                <button class="extraOperators" id="negate">+/-</button>
+                <button class="extraOperators" id="percentage">%</button>
+            </div>
+    
+            <!-- number buttons -->
+            <div class="input">
+                <div id="row1">
+                <button>7</button>
+                <button>8</button>
+                <button>9</button>
+                </div>
+                <div id="row2">
+                <button>4</button>
+                <button>5</button>
+                <button>6</button>
+                </div>
+                <div id="row3">
+                <button>1</button>
+                <button>2</button>
+                <button>3</button>
+                </div>
+                <div id="row4">
+                <button>#</button>
+                <button>0</button>
+                <button>.</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- mathematical operators  -->
+        <div class="operatorBtns">
+            <button class="operators" id="div">/</button>
+            <button class="operators" id="mult">*</button>
+            <button class="operators" id="min">-</button>
+            <button class="operators" id="add">+</button>
+            <button class="operators" id="equals">=</button>
+        </div>
+       </div>
+    </div>
+  </body>
+</html>
