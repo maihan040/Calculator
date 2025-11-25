@@ -16,45 +16,46 @@
         <div id="specialAndInputBtns">
             <!-- div to include special operator buttons -->
             <div class="specialBtns">
-                <button class="extraOperators" id="AC">AC</button>
-                <button class="extraOperators" id="negate">+/-</button>
-                <button class="extraOperators" id="percentage">%</button>
+                <button class="extraOperators" data-val="allClear" id="AC">AC</button>
+                <button class="extraOperators" data-val="negate" id="negate">+/-</button>
+                <button class="extraOperators" data-val="percent" id="percentage">%</button>
             </div>
     
             <!-- number buttons -->
-            <div class="input">
+            <div class="input" id="inputBtns">
                 <div id="row1">
-                <button>7</button>
-                <button>8</button>
-                <button>9</button>
+                <button class="inputBtn" data-val="7">7</button>
+                <button class="inputBtn" data-val="8">8</button>
+                <button class="inputBtn" data-val="9">9</button>
                 </div>
                 <div id="row2">
-                <button>4</button>
-                <button>5</button>
-                <button>6</button>
+                <button class="inputBtn" data-val="4">4</button>
+                <button class="inputBtn" data-val="5">5</button>
+                <button class="inputBtn" data-val="6">6</button>
                 </div>
                 <div id="row3">
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
+                <button class="inputBtn" data-val="1">1</button>
+                <button class="inputBtn" data-val="2">2</button>
+                <button class="inputBtn" data-val="3">3</button>
                 </div>
                 <div id="row4">
-                <button>#</button>
-                <button>0</button>
-                <button>.</button>
+                <button class="inputBtn" data-val="#">&#8596</button> <!-- converter button -->
+                <button class="inputBtn" data-val="0">0</button>
+                <button class="inputBtn" data-val=".">.</button>
                 </div>
             </div>
         </div>
 
         <!-- mathematical operators  -->
         <div class="operatorBtns">
-            <button class="operators" id="div">/</button>
-            <button class="operators" id="mult">*</button>
-            <button class="operators" id="min">-</button>
-            <button class="operators" id="add">+</button>
-            <button class="operators" id="equals">=</button>
+            <button class="operators" data-val="/" id="div">/</button>
+            <button class="operators" data-val="*" id="mult">*</button>
+            <button class="operators" data-val="-" id="min">-</button>
+            <button class="operators" data-val="+" id="add">+</button>
+            <button class="operators" data-val="=" id="equals">=</button>
         </div>
        </div>
     </div>
+    <script src="script.js"></script>
   </body>
 </html>
