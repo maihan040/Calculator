@@ -41,10 +41,17 @@ export class Calculator {
   }
 
   inputDigit(digit) {
+    // currently limit the input to
+    // only 12 digits as otherwise
+    // it will cause overflow on the
+    // screen
+
+    const maxLength = 12
     if (this.isNewEntry) {
       this.currentValue = digit
       this.isNewEntry = false
     } else {
+      if (this.currentValue.length >= maxLength) return // reject input when max length reached
       // avoid leading zeros like "0002"
       if (this.currentValue === '0') {
         this.currentValue = digit
@@ -79,5 +86,53 @@ export class Calculator {
   // %
   percent() {
     const value = parseFloat(this.currentValue)
+    if (isNaN(value)) return
+    this.currentValue = (value / 100).toString()
+    this.isNewEntry = true
+  }
+
+  // set operators
+  setOperator(op) {
+    if (this.operator !== null && !this.isNewEntry) {
+      this.compute()
+    }
+    this.operator = op
+    this.previousValue = this.currentValue
+    this.isNewEntry = true
+  }
+
+  compute() {
+    if (this.operator === null || this.previousValue === null) {
+      return // no operation to perform
+    }
+    const prev = parseFloat(this.previousValue)
+    const current = parseFloat(this.currentValue)
+
+    let result
+    switch (this.operator) {
+      case '+':
+        result = prev + current
+        break
+      case '-':
+        result = prev - current
+        break
+      case '*':
+        result = prev * current
+        break
+      case '/':
+        if (current === 0) {
+          result = 'Error' // handle division by zero
+        } else {
+          result = prev / current
+        }
+        break
+      default:
+        return
+    }
+
+    this.currentValue = result.toString()
+    this.operator = null
+    this.previousValue = null
+    this.isNewEntry = true
   }
 }

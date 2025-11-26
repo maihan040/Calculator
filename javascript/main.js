@@ -65,13 +65,14 @@ specialButtons.addEventListener('click', (event) => {
     const val = event.target.dataset.val
 
     switch (val) {
-      case 'AC':
+      case 'allClear':
         calculator.clear()
         break
-      case '+/-':
+      case 'negate':
+        console.log('here here calling toggle function')
         calculator.toggleSign()
         break
-      case '%':
+      case 'percent':
         calculator.percent()
         break
     }
