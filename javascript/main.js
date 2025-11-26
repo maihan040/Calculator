@@ -23,13 +23,13 @@ function updateDisplay() {
   resultDisplay.textContent = calculator.getDisplay()
 }
 
-//
-// add event listener for the input buttons
-//
+////////////////////////////////////////////////////////////////////
+//                                                                //
+//            add event listener for the input buttons            //
+//                                                                //
+////////////////////////////////////////////////////////////////////
 
-//
 // input buttons (0–9, decimal)
-//
 inputButtons.addEventListener('click', (event) => {
   if (event.target.matches('.inputBtn')) {
     const val = event.target.dataset.val
@@ -44,9 +44,7 @@ inputButtons.addEventListener('click', (event) => {
   }
 })
 
-//
 // operator buttons (+, -, ×, ÷, =)
-//
 operatorButtons.addEventListener('click', (event) => {
   if (event.target.matches('.operators')) {
     const val = event.target.dataset.val
@@ -61,9 +59,7 @@ operatorButtons.addEventListener('click', (event) => {
   }
 })
 
-//
 // special buttons (AC, +/-, %, etc.)
-//
 specialButtons.addEventListener('click', (event) => {
   if (event.target.matches('.extraOperators')) {
     const val = event.target.dataset.val
@@ -84,7 +80,9 @@ specialButtons.addEventListener('click', (event) => {
   }
 })
 
-//
-// initialize the display
-//
+////////////////////////////////////////////////////////////////////
+//                                                                //
+//                      initialize the display                    //
+//                                                                //
+////////////////////////////////////////////////////////////////////
 updateDisplay()
