@@ -1,92 +1,72 @@
+//////////////////////////////////////////////////////////
+//                                                      //
+// main.js - Entry point, wires events and              //
+// connects calculator logic and UI                     //
+//                                                      //
+//////////////////////////////////////////////////////////
+
 //
-// import the calculator class
+// import modules
 //
 import { Calculator } from './Calculator.js'
+import UIController from './UIController.js'
 
 //
-// get the DOM objects
-//
-const resultDisplay = document.getElementById('calcOP')
-const inputButtons = document.querySelector('.input')
-const specialButtons = document.querySelector('.specialBtns')
-const operatorButtons = document.querySelector('.operatorBtns')
-
-//
-// create the calculator instance
+// local variables and instances
 //
 const calculator = new Calculator()
+const ui = new UIController()
 
 //
-// global variables
+// Initial display setup
 //
-const acButton = document.getElementById('AC')
+ui.updateDisplay(calculator)
+ui.updateAcButton(calculator)
 
-////////////////////////////////////////////////////////////////////
-//                                                                //
-//                       helper functions                         //
-//                                                                //
-////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+//                                                      //
+//                set up event listeners                //
+//                                                      //
+//////////////////////////////////////////////////////////
 
-// helper function to refresh UI
-function updateDisplay() {
-  resultDisplay.textContent = calculator.getDisplay()
-}
-
-// helper function to swap "AC" all clear and backspace "⌫"
-function updateAcButton() {
-  if (calculator.isClear()) {
-    acButton.textContent = 'AC'
-    acButton.dataset.val = 'allClear'
-  } else {
-    acButton.textContent = '⌫'
-    acButton.dataset.val = 'backspace'
-  }
-}
-
-////////////////////////////////////////////////////////////////////
-//                                                                //
-//            add event listener for the input buttons            //
-//                                                                //
-////////////////////////////////////////////////////////////////////
-
-// input buttons (0–9, decimal)
-inputButtons.addEventListener('click', (event) => {
+//
+// Input buttons
+//
+ui.inputButtons.addEventListener('click', (event) => {
   if (event.target.matches('.inputBtn')) {
     const val = event.target.dataset.val
-
     if (val === '.') {
       calculator.inputDecimal()
     } else {
       calculator.inputDigit(val)
     }
-
-    updateDisplay()
-    updateAcButton()
+    ui.updateDisplay(calculator)
+    ui.updateAcButton(calculator)
   }
 })
 
-// operator buttons (+, -, ×, ÷, =)
-operatorButtons.addEventListener('click', (event) => {
+//
+// Operator buttons
+//
+ui.operatorButtons.addEventListener('click', (event) => {
   if (event.target.matches('.operators')) {
     const val = event.target.dataset.val
-
     if (val === '=') {
       calculator.compute()
-      updateDisplay()
-      updateAcButton()
+      ui.updateDisplay(calculator)
+      ui.updateAcButton(calculator)
     } else {
       calculator.setOperator(val)
-      updateDisplay()
+      ui.updateDisplay(calculator)
     }
-
-    updateDisplay()
   }
 })
 
-// special buttons (AC, +/-, %, etc.)
-specialButtons.addEventListener('click', (event) => {
+//
+// Special buttons excluding AC
+//
+ui.specialButtons.addEventListener('click', (event) => {
   if (event.target.matches('.extraOperators') && event.target.id !== 'AC') {
-    // exclude AC button here
     const val = event.target.dataset.val
     switch (val) {
       case 'allClear':
@@ -102,25 +82,18 @@ specialButtons.addEventListener('click', (event) => {
         calculator.percent()
         break
     }
-    updateDisplay()
-    updateAcButton()
+    ui.updateDisplay(calculator)
+    ui.updateAcButton(calculator)
   }
 })
 
-// AC button click solely handles clearing or backspace
-acButton.addEventListener('click', () => {
-  if (acButton.dataset.val === 'allClear') {
+// AC button solely controls clear/backspace
+ui.acButton.addEventListener('click', () => {
+  if (ui.acButton.dataset.val === 'allClear') {
     calculator.clear()
   } else {
     calculator.backspace()
   }
-  updateDisplay()
-  updateAcButton()
+  ui.updateDisplay(calculator)
+  ui.updateAcButton(calculator)
 })
-
-////////////////////////////////////////////////////////////////////
-//                                                                //
-//                      initialize the display                    //
-//                                                                //
-////////////////////////////////////////////////////////////////////
-updateDisplay()
