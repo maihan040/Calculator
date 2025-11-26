@@ -61,7 +61,7 @@ export class Calculator {
     }
   }
 
-  // input value 0-9
+  // input "."
   inputDecimal() {
     if (this.isNewEntry) {
       this.currentValue = '0.'

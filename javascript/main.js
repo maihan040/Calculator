@@ -54,7 +54,7 @@ ui.operatorButtons.addEventListener('click', (event) => {
     if (val === '=') {
       calculator.compute()
       ui.updateDisplay(calculator)
-      ui.updateAcButton(calculator)
+      ui.updateAcButton(calculator, true)
     } else {
       calculator.setOperator(val)
       ui.updateDisplay(calculator)

@@ -13,8 +13,8 @@ export default class UIController {
     this.resultDisplay.textContent = calculator.getDisplay()
   }
 
-  updateAcButton(calculator) {
-    if (calculator.isClear()) {
+  updateAcButton(calculator, switchAC = false) {
+    if (calculator.isClear() || switchAC) {
       this.acButton.textContent = 'AC'
       this.acButton.dataset.val = 'allClear'
     } else {
