@@ -12,6 +12,8 @@ Easily extendable for additional functionality
 
 Screenshot:
 
+<img width="420" height="530" alt="Screenshot 2025-11-21 at 5 04 14 PM" src="https://github.com/user-attachments/assets/5e64e146-81a3-488a-aca7-62dcc5ee694e" />
+
 Installation
 Clone this repository: https://github.com/maihan040/Calculator
 
@@ -33,8 +35,8 @@ AC to clear all input
 Project Structure
 ```
 /
-├── index.html     # Main HTML structure
-├── style.css      # iPhone-inspired calculator styles
-└── script.js      # JavaScript logic 
+├── index.html         # Main HTML structure
+├── style.css          # iPhone-inspired calculator styles
+└── javascript.js      # JavaScript logic 
 All components are modular and can be customized easily.
 ```
