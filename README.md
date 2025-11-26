@@ -12,7 +12,8 @@ Easily extendable for additional functionality
 
 Screenshot:
 
-<img width="420" height="530" alt="Screenshot 2025-11-21 at 5 04 14 PM" src="https://github.com/user-attachments/assets/5e64e146-81a3-488a-aca7-62dcc5ee694e" />
+<img width="336" height="538" alt="Screenshot 2025-11-26 at 3 03 17 PM" src="https://github.com/user-attachments/assets/decac491-2227-4226-bcfa-15b159d8ef6c" />
+
 
 Installation
 Clone this repository: https://github.com/maihan040/Calculator
