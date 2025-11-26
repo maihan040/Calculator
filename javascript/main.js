@@ -17,10 +17,30 @@ const operatorButtons = document.querySelector('.operatorBtns')
 const calculator = new Calculator()
 
 //
-// helper function to refresh UI
+// global variables
 //
+const acButton = document.getElementById('AC')
+
+////////////////////////////////////////////////////////////////////
+//                                                                //
+//                       helper functions                         //
+//                                                                //
+////////////////////////////////////////////////////////////////////
+
+// helper function to refresh UI
 function updateDisplay() {
   resultDisplay.textContent = calculator.getDisplay()
+}
+
+// helper function to swap "AC" all clear and backspace "⌫"
+function updateAcButton() {
+  if (calculator.isClear()) {
+    acButton.textContent = 'AC'
+    acButton.dataset.val = 'allClear'
+  } else {
+    acButton.textContent = '⌫'
+    acButton.dataset.val = 'backspace'
+  }
 }
 
 ////////////////////////////////////////////////////////////////////
@@ -41,6 +61,7 @@ inputButtons.addEventListener('click', (event) => {
     }
 
     updateDisplay()
+    updateAcButton()
   }
 })
 
@@ -51,8 +72,11 @@ operatorButtons.addEventListener('click', (event) => {
 
     if (val === '=') {
       calculator.compute()
+      updateDisplay()
+      updateAcButton()
     } else {
       calculator.setOperator(val)
+      updateDisplay()
     }
 
     updateDisplay()
@@ -61,24 +85,37 @@ operatorButtons.addEventListener('click', (event) => {
 
 // special buttons (AC, +/-, %, etc.)
 specialButtons.addEventListener('click', (event) => {
-  if (event.target.matches('.extraOperators')) {
+  if (event.target.matches('.extraOperators') && event.target.id !== 'AC') {
+    // exclude AC button here
     const val = event.target.dataset.val
-
     switch (val) {
       case 'allClear':
         calculator.clear()
         break
+      case 'backspace':
+        calculator.backspace()
+        break
       case 'negate':
-        console.log('here here calling toggle function')
         calculator.toggleSign()
         break
       case 'percent':
         calculator.percent()
         break
     }
-
     updateDisplay()
+    updateAcButton()
   }
+})
+
+// AC button click solely handles clearing or backspace
+acButton.addEventListener('click', () => {
+  if (acButton.dataset.val === 'allClear') {
+    calculator.clear()
+  } else {
+    calculator.backspace()
+  }
+  updateDisplay()
+  updateAcButton()
 })
 
 ////////////////////////////////////////////////////////////////////

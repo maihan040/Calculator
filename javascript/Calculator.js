@@ -101,6 +101,20 @@ export class Calculator {
     this.isNewEntry = true
   }
 
+  backspace() {
+    if (this.isNewEntry) return // nothing to delete if fresh entry
+    if (this.currentValue.length <= 1) {
+      this.currentValue = '0'
+      this.isNewEntry = true
+    } else {
+      this.currentValue = this.currentValue.slice(0, -1)
+    }
+  }
+
+  isClear() {
+    return this.currentValue === '0' && this.isNewEntry
+  }
+
   compute() {
     if (this.operator === null || this.previousValue === null) {
       return // no operation to perform
@@ -130,6 +144,7 @@ export class Calculator {
         return
     }
 
+    // member variables
     this.currentValue = result.toString()
     this.operator = null
     this.previousValue = null
